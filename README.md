@@ -79,7 +79,7 @@ To see it : http://localhost:8080/api/users?page=1 (second page)
 
 HTTP Method: PUT
 
-insert in the  nel body:
+Insert in the body:
 
 {
 
