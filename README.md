@@ -61,13 +61,11 @@ insert in the  nel body:
 
 
 
-## Verify User create before, By ID
+## Verify created user, by ID
 
 HTTP Method: GET
 
 Request url: http://localhost:8080/api/users/6
-
-
 
 Please note: with http://localhost:8080/api/users/6  you don't see the new user because the pagination is set to 4 in application.properties
 
@@ -96,7 +94,7 @@ insert in the  nel body:
 
 
 
-## Verify User update before, By ID
+## Verify updated user, by ID
 
 HTTP Method: GET
 
