@@ -1,47 +1,78 @@
-# Spring-Boot-Security-JWT-JSON-Web-Token-Authentication-Postgres
-Spring Boot Security + JWT (JSON Web Token) Authentication using POSTGRES example
+# Spring Data REST
+Spring Data REST + REST Repositories + Spring Data JPA + H2 database + Lombok
 
-Create the database on postgres: test
-The 'user' table will then be generated at runtime
+Spring Data REST is part of Spring Data project and makes it easy to build REST web services. 
 
-# Run
+Spring Data REST analyzes your application’s domain model and expose it as REST endpoint.
+
+
+## Run
 mvn clean spring-boot:run
 
-# REST Call
-For rest calls, install the chrome plugin: ADVANCED REST CLIENT (ARC).
-Download link: https://chrome.google.com/webstore/detail/advanced-rest-client/
+## For rest calls, 
+install the chrome plugin: ADVANCED REST CLIENT (ARC). 
+Download link: https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo 
 ARC is similar to Postman
+Open ARC from google -> top left click on 'APP' In ARC enter:
 
-Open ARC from google -> top left click on 'APP'
-In ARC enter:
+## Get all Users:
+HTTP Method: GET
+Request url: http://localhost:8080/api/users
 
-# Enter your database credentials
-Request URL: http://localhost:8080/register
+
+## Get user By ID
+HTTP Method: GET
+Request url: http://localhost:8080/api/users/1
+
+
+## Create a new user
 Method: POST
 Body content type: application/json
-
-inserire nel body:
+Request url: http://localhost:8080/api/users
+insert in the  nel body:
 {
-  "username": "yourUsername",
-  "password": "yourPassword"
+  "firstName": "Enrico",
+   "lastName": "Milano",
+   "email": "milano@gmail.com"
 }
 
 
-# Authentication
-Request URL: http://localhost:8080/authenticate
-Method: POST
-Body content type: application/json
+## Verify User create before, By ID
+HTTP Method: GET
+Request url: http://localhost:8080/api/users/6
 
-inserire nel body:
+Please note: with http://localhost:8080/api/users/6  you don't see the new user because the pagination is set to 4 in application.properties
+To see it : http://localhost:8080/api/users?page=1 (second page)
+
+
+
+## Modifiy User
+HTTP Method: PUT
+insert in the  nel body:
 {
-  "username": "yourUsername",
-  "password": "yourPassword"
+  "firstName": "Enrico",
+   "lastName": "Roma",
+   "email": "roma@gmail.com"
 }
 
 
-# To see the protected page
-Request URL: http://localhost:8080/hello
-Method: GET
---> Add HEADER 
-Header name =  authorization
-Header value=  Bearer TOKEN (preso da http://localhost:8080/authenticate)    
+## Verify User update before, By ID
+HTTP Method: GET
+Request url: http://localhost:8080/api/users/6
+
+
+
+## Delete User
+HTTP Method: DELETE
+Request url: http://localhost:8080/api/users/6
+
+
+## Customize default Pagination
+Default Pagination is in application.properties file
+HTTP Method: GET
+Request url: http://localhost:8080/api/users?page=0&size=3
+
+
+## Sorting
+HTTP Method: GET
+Request url: http://localhost:8080/api/users?sort=fisrtName
